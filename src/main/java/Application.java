@@ -7,7 +7,12 @@ import java.util.List;
 public class Application {
 
     public static void main(String[] args) {
-        main3();
+        //main3();
+        for (int i = 0; i < 256; i++) {
+            String bin = Integer.toBinaryString(i);
+            while (bin.length() < 8) bin = "0" + bin;
+            System.out.println(bin);
+        }
     }
 
     private static void main1() {
