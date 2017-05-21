@@ -1,11 +1,12 @@
 package Structures;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TableOfCodes {
-    private Integer lengthOfCodes;
-    private Integer amountOfCodes;
-    private List<String> codes;
+    private final Integer lengthOfCodes;
+    private final Integer amountOfCodes;
+    private final List<String> codes;
 
     public TableOfCodes(Integer lengthOfCodes, Integer amountOfCodes, List<String> codes) {
         this.lengthOfCodes = lengthOfCodes;
@@ -23,5 +24,9 @@ public class TableOfCodes {
 
     public List<String> getCodes() {
         return codes;
+    }
+
+    public static TableOfCodes emptyTable(){
+        return new TableOfCodes(0, 0, new ArrayList<>());
     }
 }
