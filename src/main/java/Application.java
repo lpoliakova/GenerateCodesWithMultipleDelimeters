@@ -37,8 +37,10 @@ public class Application {
     }*/
 
     private static void main3(){
-        //String code = "000100111011100110";
-        String code = "111111111111111111110110";
-        System.out.println("Code: " + code + " pos - " + Delimiter2StringCodesBuilder.getIntegerForCode(code));
+        String code = "0011101011100110";
+        //String code = "111111111111111111110110";
+        Integer number = Delimiter2StringCodesBuilder.getIntegerForCode(code);
+        String newCode = Delimiter2StringCodesBuilder.getCodeForInteger(number);
+        System.out.println("Code: " + code + " pos - " + number + " new code - " + newCode);
     }
 }
