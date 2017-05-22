@@ -3,13 +3,12 @@ import logic.*;
 import Structures.*;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 public class Application {
 
     public static void main(String[] args) {
-        main5();
+        main4();
 
     }
 
@@ -19,22 +18,9 @@ public class Application {
         for (String code : listOfCodes) {
             System.out.println(code);
         }
-
     }
 
-    private static void main2() {
-        TableOfEndings t2 = new TableOfEndings();
-        List<TableOfCodes> table = t2.buildTable(9);
-        printTables(table);
-    }
-
-    private static void main3() {
-        TableOfTransitional t2 = new TableOfTransitional();
-        List<TableOfCodes> table = t2.buildTable(8);
-        printTables(table);
-    }
-
-    private static void main4() {
+    /*private static void main2() {
         CountPosition counter = new CountPosition();
         TableOfEndings table = new TableOfEndings();
 
@@ -47,11 +33,21 @@ public class Application {
             pos += tables.get(i).getAmountOfCodes();
         }
         System.out.println(pos + tables.get(code.length()).getCodes().indexOf(code) + 1);
+    }*/
+
+    private static void main3() {
+        printTables(Arrays.asList(new TableEndings().getCodes()));
+        printTable(new TableMiddle().codes);
     }
 
-    private static void main5() {
-        //printTables(Arrays.asList(new TableBeginnings().getCodes()));
-        printTable(new TableMiddle().codes);
+    private static void main4() {
+        String codePart1 = "10011";
+        String codePart2 = "100110";
+        TableBeginnings beginnings = new TableBeginnings();
+        TableEndings endings = new TableEndings();
+        System.out.println("Code: " + codePart1 + " len - " + codePart1.length() + " pos - " + (beginnings.getCodes(codePart1.length()).getCodes().indexOf(codePart1) + 1));
+        System.out.println("Code: " + codePart2 + " len - " + codePart2.length() + " pos - " + (endings.getCodes(codePart2.length()).getCodes().indexOf(codePart2) + 1));
+        System.out.println("code: " + codePart1 + codePart2 + " len - " + (codePart1.length() + codePart2.length()) + " globPos - " + CountPosition.getGlobalPosition(codePart2));
     }
 
     private static void printTables(List<TableOfCodes> tables) {

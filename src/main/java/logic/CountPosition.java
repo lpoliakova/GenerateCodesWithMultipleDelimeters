@@ -1,12 +1,31 @@
 package logic;
 
 import Structures.TableOfCodes;
-
-import java.util.List;
+import Structures.TableUtils;
 
 public class CountPosition {
 
-    public Integer count(String code) {
+    public static Integer getGlobalPosition(String code){
+        TableOfCodes allCodes = getTableOfSize(code.length());
+        return allCodes.getCodes().indexOf(code) + 1;
+    }
+
+    private static TableOfCodes getTableOfSize(Integer size){
+        TableOfCodes[] codes = new TableOfCodes[size + 1];
+        codes[0] = TableOfCodes.emptyTable();
+        for (int i = 1; i <= size; i++){
+            codes[i] = TableUtils.getTableBeginnings(i, codes);
+            if (i < 7) {
+                System.out.println("Length : " + codes[i].getLengthOfCodes());
+                System.out.println("Amount : " + codes[i].getAmountOfCodes());
+                System.out.println("Codes : ");
+                codes[i].getCodes().forEach(System.out::println);
+            }
+        }
+        return codes[size];
+    }
+
+    /*public Integer count(String code) {
         List<TableOfCodes> transTable = (new TableOfTransitional()).buildTable(10);
         List<TableOfCodes> endTable = (new TableOfEndings()).buildTable(10);
 
@@ -32,5 +51,5 @@ public class CountPosition {
         position += endTable.get(code.length()).getCodes().indexOf(code) + 1;
         //position = position * endTable.get(code.length()).getAmountOfCodes() + endTable.get(code.length()).getCodes().indexOf(code) + 1;
         return position;
-    }
+    }*/
 }
