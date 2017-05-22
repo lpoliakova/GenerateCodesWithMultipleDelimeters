@@ -12,7 +12,7 @@ public class CountPosition {
 
     private static TableOfCodes getTableOfSize(Integer size){
         TableOfCodes[] codes = new TableOfCodes[size + 1];
-        codes[0] = TableOfCodes.emptyTable();
+        codes[0] = TableOfCodes.emptyTable(0);
         for (int i = 1; i <= size; i++){
             codes[i] = TableUtils.getTableBeginnings(i, codes);
             if (i < 7) {

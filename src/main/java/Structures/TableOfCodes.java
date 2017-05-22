@@ -26,7 +26,20 @@ public class TableOfCodes {
         return codes;
     }
 
-    public static TableOfCodes emptyTable(){
-        return new TableOfCodes(0, 0, new ArrayList<>());
+    public static TableOfCodes emptyTable(Integer length){
+        return new TableOfCodes(length, 0, new ArrayList<>());
+    }
+
+    public static void printTables(List<TableOfCodes> tables) {
+        for (TableOfCodes t : tables) {
+            printTable(t);
+        }
+    }
+
+    public static void printTable(TableOfCodes table){
+        System.out.println("Length : " + table.getLengthOfCodes());
+        System.out.println("Amount : " + table.getAmountOfCodes());
+        System.out.println("Codes : ");
+        table.getCodes().forEach(System.out::println);
     }
 }

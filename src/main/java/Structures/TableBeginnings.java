@@ -8,7 +8,7 @@ public class TableBeginnings {
 
     public TableBeginnings(){
         codes = new TableOfCodes[9];
-        codes[0] = TableOfCodes.emptyTable();
+        codes[0] = TableOfCodes.emptyTable(0);
         codes[1] = TableUtils.getTableBeginnings(1, codes);
         codes[2] = TableUtils.getTableBeginnings(2, codes);
         codes[3] = TableUtils.getTableBeginnings(3, codes);
