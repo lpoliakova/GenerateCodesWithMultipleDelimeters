@@ -11,7 +11,7 @@ import java.io.IOException;
 public class Application {
 
     public static void main(String[] args) throws IOException{
-        main4();
+        main3();
     }
 
     private static void main1(){

@@ -4,9 +4,7 @@ import Tables.IntegerCode;
 import Tables.TableOfIntegerCodes;
 import Tables.TableOfStringCodes;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by oradchykova on 5/22/17.
@@ -25,7 +23,11 @@ public class Delimiter2IntegerCodes {
         if (code.getCodeSize() > codesForSize.size() - 1) {
             getCodesToSize(code.getCodeSize());
         }
-        return codesForSize.get(code.getCodeSize()).getCodes().indexOf(code.getCode()) + 1;
+        return getPositionInTable(codesForSize.get(code.getCodeSize()), code.getCode());
+    }
+
+    private static Integer getPositionInTable(TableOfIntegerCodes table, Integer code){
+        return Collections.binarySearch(table.getCodes(), code);
     }
 
     private static void getCodesToSize(Integer size){

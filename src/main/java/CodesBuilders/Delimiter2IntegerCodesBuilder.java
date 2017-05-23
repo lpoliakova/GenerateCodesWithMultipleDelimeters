@@ -7,7 +7,7 @@ import Tables.IntegerCode;
  */
 public class Delimiter2IntegerCodesBuilder {
     public static Integer getIntegerForCode(IntegerCode code){
-        return Delimiter2Amounts.getAmountForCurrentSize(code.getCodeSize() - 1) + Delimiter2IntegerCodes.getPositionForCurrentSize(code) - 1;
+        return Delimiter2Amounts.getAmountForCurrentSize(code.getCodeSize() - 1) + Delimiter2IntegerCodes.getPositionForCurrentSize(code);
     }
 
     public static IntegerCode getCodeForInteger(Integer number){
