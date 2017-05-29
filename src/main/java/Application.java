@@ -1,3 +1,4 @@
+import CodesBuilders.Delimiter235IntegerCodesBuilder;
 import CodesBuilders.Delimiter2IntegerCodesBuilder;
 import CodesBuilders.Delimiter2StringCodesBuilder;
 import Coding.Decoding;
@@ -11,7 +12,7 @@ import java.io.IOException;
 public class Application {
 
     public static void main(String[] args) throws IOException{
-        main3();
+        main5();
     }
 
     private static void main1(){
@@ -23,11 +24,11 @@ public class Application {
     }
 
     private static void main2(){
-        IntegerCode code = new IntegerCode("110");
-        //IntegerCode code = new IntegerCode("1111111111111111111111111110110");
-        Integer number = Delimiter2IntegerCodesBuilder.getIntegerForCode(code);
-        IntegerCode newCode = Delimiter2IntegerCodesBuilder.getCodeForInteger(number);
-        System.out.println("Code: " + code + " pos - " + number + " new code - " + newCode);
+        //IntegerCode code = new IntegerCode("110");
+        IntegerCode code = new IntegerCode("1111111111111111111111111110110");
+        Integer number = Delimiter235IntegerCodesBuilder.getIntegerForCode(code);
+        IntegerCode newCode = Delimiter235IntegerCodesBuilder.getCodeForInteger(number);
+        System.out.println("Code: " + code + " pos - " + number + " new code - " + newCode + " " + (code.getCodeSize().equals(newCode.getCodeSize()) && code.getCode().equals(newCode.getCode())));
     }
 
     private static void main3(){
@@ -56,5 +57,25 @@ public class Application {
         Decoding.decode(location + "exmpCode", location + "exmpOut", location + "exmpDict");
         Integer compare = CompareTexts.compare(new File(location + "exmpIn"), new File(location + "exmpOut"));
         System.out.println(compare == 0 ? "equal" : "not equal word " + compare);
+    }
+
+    private static void main5(){
+        long start = System.nanoTime();
+        for (int i = 1; i <= 14838725; i++){
+            IntegerCode code = Delimiter235IntegerCodesBuilder.getCodeForInteger(i);
+            Integer number = Delimiter235IntegerCodesBuilder.getIntegerForCode(code);
+            if (i % 10000 == 0) {
+                long end = System.nanoTime();
+                System.out.println("number " + i + ", time " + ((double)(end - start) / 1000000000.0) + "s");
+            }
+            if (i % 100000 == 0){
+                long end = System.nanoTime();
+                System.out.println("big number " + i + ", time " + ((double)(end - start) / 1000000000.0) + "s");
+            }
+            if (i != number) {
+                System.out.println("number: " + i + " code: " + code);
+                break;
+            }
+        }
     }
 }
