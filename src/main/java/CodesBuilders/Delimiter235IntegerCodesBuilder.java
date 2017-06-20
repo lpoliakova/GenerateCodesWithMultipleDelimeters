@@ -1,6 +1,6 @@
 package CodesBuilders;
 
-import Tables.IntegerCode;
+import CodesLists.IntegerCode;
 
 /**
  * Created by oradchykova on 5/29/17.

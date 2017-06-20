@@ -1,4 +1,4 @@
-package Tables;
+package CodesLists;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,13 +6,13 @@ import java.util.List;
 /**
  * Created by oradchykova on 5/22/17.
  */
-public class TableOfIntegerCodes {
+public class ListOfIntegerCodes {
 
     private final Integer lengthOfCodes;
     private final Integer amountOfCodes;
     private final List<Integer> codes;
 
-    public TableOfIntegerCodes(Integer lengthOfCodes, Integer amountOfCodes, List<Integer> codes) {
+    public ListOfIntegerCodes(Integer lengthOfCodes, Integer amountOfCodes, List<Integer> codes) {
         this.lengthOfCodes = lengthOfCodes;
         this.amountOfCodes = amountOfCodes;
         this.codes = codes;
@@ -30,17 +30,17 @@ public class TableOfIntegerCodes {
         return codes;
     }
 
-    public static TableOfIntegerCodes emptyTable(Integer length){
-        return new TableOfIntegerCodes(length, 0, new ArrayList<>());
+    public static ListOfIntegerCodes emptyTable(Integer length){
+        return new ListOfIntegerCodes(length, 0, new ArrayList<>());
     }
 
-    public static void printTables(List<TableOfIntegerCodes> tables) {
-        for (TableOfIntegerCodes t : tables) {
+    public static void printTables(List<ListOfIntegerCodes> tables) {
+        for (ListOfIntegerCodes t : tables) {
             printTable(t);
         }
     }
 
-    public static void printTable(TableOfIntegerCodes table){
+    public static void printTable(ListOfIntegerCodes table){
         System.out.println("Length : " + table.getLengthOfCodes());
         System.out.println("Amount : " + table.getAmountOfCodes());
         System.out.println("Codes : ");

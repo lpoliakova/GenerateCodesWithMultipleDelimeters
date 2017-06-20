@@ -1,4 +1,4 @@
-package Tables;
+package CodesLists;
 
 /**
  * Created by oradchykova on 5/22/17.

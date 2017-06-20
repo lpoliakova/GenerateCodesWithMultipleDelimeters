@@ -1,8 +1,7 @@
 package CodesBuilders;
 
-import Tables.IntegerCode;
-import Tables.TableOfIntegerCodes;
-import Tables.TableOfStringCodes;
+import CodesLists.IntegerCode;
+import CodesLists.ListOfIntegerCodes;
 
 import java.util.*;
 
@@ -10,7 +9,7 @@ import java.util.*;
  * Created by oradchykova on 5/22/17.
  */
 public class Delimiter2IntegerCodes {
-    private static final List<TableOfIntegerCodes> codesForSize = new ArrayList<>();
+    private static final List<ListOfIntegerCodes> codesForSize = new ArrayList<>();
 
     public static IntegerCode getCodeForCurrentSize(Integer size, Integer index){
         if (size > codesForSize.size() - 1) {
@@ -26,7 +25,7 @@ public class Delimiter2IntegerCodes {
         return getPositionInTable(codesForSize.get(code.getCodeSize()), code.getCode());
     }
 
-    private static Integer getPositionInTable(TableOfIntegerCodes table, Integer code){
+    private static Integer getPositionInTable(ListOfIntegerCodes table, Integer code){
         return Collections.binarySearch(table.getCodes(), code);
     }
 
@@ -38,13 +37,13 @@ public class Delimiter2IntegerCodes {
         for (int i = startSize; i <= size; i++){
             codesForSize.add(getCodesForSize(i));
             //System.out.println("built " + i + " table");
-            //TableOfIntegerCodes.printTable(codesForSize.get(i));
+            //ListOfIntegerCodes.printTable(codesForSize.get(i));
         }
     }
 
-    private static TableOfIntegerCodes getCodesForSize(Integer size){
+    private static ListOfIntegerCodes getCodesForSize(Integer size){
         Integer amount = Delimiter2Amounts.getAmountForCurrentSize(size) - Delimiter2Amounts.getAmountForCurrentSize(size - 1);
-        return new TableOfIntegerCodes(size, amount, growCodes(size, amount));
+        return new ListOfIntegerCodes(size, amount, growCodes(size, amount));
     }
 
     private static List<Integer> growCodes(Integer size, Integer amount){
@@ -72,9 +71,9 @@ public class Delimiter2IntegerCodes {
     }
 
     private static void initCodesForSize(){
-        codesForSize.add(TableOfIntegerCodes.emptyTable(0));
-        codesForSize.add(TableOfIntegerCodes.emptyTable(1));
-        codesForSize.add(TableOfIntegerCodes.emptyTable(2));
-        codesForSize.add(new TableOfIntegerCodes(3, 1, new ArrayList<>(Arrays.asList(new Integer[]{6}))));
+        codesForSize.add(ListOfIntegerCodes.emptyTable(0));
+        codesForSize.add(ListOfIntegerCodes.emptyTable(1));
+        codesForSize.add(ListOfIntegerCodes.emptyTable(2));
+        codesForSize.add(new ListOfIntegerCodes(3, 1, new ArrayList<>(Arrays.asList(new Integer[]{6}))));
     }
 }

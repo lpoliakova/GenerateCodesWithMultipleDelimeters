@@ -1,14 +1,14 @@
-package Tables;
+package CodesLists;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TableOfStringCodes {
+public class ListOfStringCodes {
     private final Integer lengthOfCodes;
     private final Integer amountOfCodes;
     private final List<String> codes;
 
-    public TableOfStringCodes(Integer lengthOfCodes, Integer amountOfCodes, List<String> codes) {
+    public ListOfStringCodes(Integer lengthOfCodes, Integer amountOfCodes, List<String> codes) {
         this.lengthOfCodes = lengthOfCodes;
         this.amountOfCodes = amountOfCodes;
         this.codes = codes;
@@ -26,17 +26,17 @@ public class TableOfStringCodes {
         return codes;
     }
 
-    public static TableOfStringCodes emptyTable(Integer length){
-        return new TableOfStringCodes(length, 0, new ArrayList<>());
+    public static ListOfStringCodes emptyTable(Integer length){
+        return new ListOfStringCodes(length, 0, new ArrayList<>());
     }
 
-    public static void printTables(List<TableOfStringCodes> tables) {
-        for (TableOfStringCodes t : tables) {
+    public static void printTables(List<ListOfStringCodes> tables) {
+        for (ListOfStringCodes t : tables) {
             printTable(t);
         }
     }
 
-    public static void printTable(TableOfStringCodes table){
+    public static void printTable(ListOfStringCodes table){
         System.out.println("Length : " + table.getLengthOfCodes());
         System.out.println("Amount : " + table.getAmountOfCodes());
         System.out.println("Codes : ");

@@ -1,6 +1,6 @@
 package CodesBuilders;
 
-import Tables.TableOfStringCodes;
+import CodesLists.ListOfStringCodes;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,7 +10,7 @@ import java.util.List;
  * Created by oradchykova on 5/22/17.
  */
 public class Delimiter2StringCodes {
-    private static final List<TableOfStringCodes> codesForSize = new ArrayList<>();
+    private static final List<ListOfStringCodes> codesForSize = new ArrayList<>();
 
     public static String getCodeForCurrentSize(Integer size, Integer index){
         if (size > codesForSize.size() - 1) {
@@ -34,13 +34,13 @@ public class Delimiter2StringCodes {
         for (int i = startSize; i <= size; i++){
             codesForSize.add(getCodesForSize(i));
             //System.out.println("built " + i + "table");
-            //TableOfStringCodes.printTable(codesForSize.get(i));
+            //ListOfStringCodes.printTable(codesForSize.get(i));
         }
     }
 
-    private static TableOfStringCodes getCodesForSize(Integer size){
+    private static ListOfStringCodes getCodesForSize(Integer size){
         Integer amount = Delimiter2Amounts.getAmountForCurrentSize(size) - Delimiter2Amounts.getAmountForCurrentSize(size - 1);
-        return new TableOfStringCodes(size, amount, growCodes(size, amount));
+        return new ListOfStringCodes(size, amount, growCodes(size, amount));
     }
 
     private static List<String> growCodes(Integer size, Integer amount) {
@@ -65,9 +65,9 @@ public class Delimiter2StringCodes {
     }
 
     private static void initCodesForSize(){
-        codesForSize.add(TableOfStringCodes.emptyTable(0));
-        codesForSize.add(TableOfStringCodes.emptyTable(1));
-        codesForSize.add(TableOfStringCodes.emptyTable(2));
-        codesForSize.add(new TableOfStringCodes(3, 1, new ArrayList<>(Arrays.asList(new String[]{"110"}))));
+        codesForSize.add(ListOfStringCodes.emptyTable(0));
+        codesForSize.add(ListOfStringCodes.emptyTable(1));
+        codesForSize.add(ListOfStringCodes.emptyTable(2));
+        codesForSize.add(new ListOfStringCodes(3, 1, new ArrayList<>(Arrays.asList(new String[]{"110"}))));
     }
 }

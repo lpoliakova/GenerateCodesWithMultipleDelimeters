@@ -1,9 +1,7 @@
 import CodesBuilders.Delimiter235IntegerCodesBuilder;
 import CodesBuilders.Delimiter2IntegerCodesBuilder;
 import CodesBuilders.Delimiter2StringCodesBuilder;
-import Coding.Decoding;
-import Coding.Encoding;
-import Tables.IntegerCode;
+import CodesLists.IntegerCode;
 import Utils.CompareTexts;
 
 import java.io.File;
@@ -12,7 +10,8 @@ import java.io.IOException;
 public class Application {
 
     public static void main(String[] args) throws IOException{
-        main5();
+        main4();
+        main6();
     }
 
     private static void main1(){
@@ -53,8 +52,12 @@ public class Application {
 
     public static void main4() throws IOException{
         String location = "src/test/java/";
-        Encoding.encode(location + "exmpIn", location + "exmpCode", location + "exmpDict");
-        Decoding.decode(location + "exmpCode", location + "exmpOut", location + "exmpDict");
+        long start = System.nanoTime();
+        GradualCoding.Encoding235.encode(location + "exmpIn", location + "exmpCode", location + "exmpDict");
+        long encoding = System.nanoTime();
+        GradualCoding.Decoding235.decode(location + "exmpCode", location + "exmpOut", location + "exmpDict");
+        long decoding = System.nanoTime();
+        System.out.println("Gradual: enc " + ((double)(encoding - start) / 1000000000.0) + " dec: " + ((double)(decoding - encoding) / 1000000000.0));
         Integer compare = CompareTexts.compare(new File(location + "exmpIn"), new File(location + "exmpOut"));
         System.out.println(compare == 0 ? "equal" : "not equal word " + compare);
     }
@@ -78,4 +81,17 @@ public class Application {
             }
         }
     }
+
+    public static void main6() throws IOException{
+        String location = "src/test/java/";
+        long start = System.nanoTime();
+        DiscursiveCoding.Encoding235.encode(location + "exmpIn", location + "exmpCode1", location + "exmpDict");
+        long encoding = System.nanoTime();
+        DiscursiveCoding.SlowDecoding235.decode(location + "exmpCode1", location + "exmpOut", location + "exmpDict");
+        long decoding = System.nanoTime();
+        System.out.println("Discursive: enc " + ((double)(encoding - start) / 1000000000.0) + " dec: " + ((double)(decoding - encoding) / 1000000000.0));
+        Integer compare = CompareTexts.compare(new File(location + "exmpIn"), new File(location + "exmpOut"));
+        System.out.println(compare == 0 ? "equal" : "not equal word " + compare);
+    }
+
 }

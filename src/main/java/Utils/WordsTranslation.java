@@ -52,7 +52,7 @@ public class WordsTranslation {
 
     private static Integer indexOfWord(String word, List<String> array) {
         for (int i = 0; i < array.size(); i++) {
-            if (array.get(i).equals(word)) return i;
+            if (array.get(i).equals(word)) return i + 1;
         }
         return 0;
     }
@@ -60,7 +60,7 @@ public class WordsTranslation {
     private static List<String> stringOutput(List<Integer> output, List<String> words){
         List<String> stringOutput = new ArrayList<>();
         for (Integer number : output) {
-            stringOutput.add(words.get(number));
+            stringOutput.add(words.get(number - 1));
         }
         return stringOutput;
     }

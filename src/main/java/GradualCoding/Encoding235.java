@@ -1,7 +1,7 @@
-package Coding;
+package GradualCoding;
 
-import CodesBuilders.Delimiter2IntegerCodesBuilder;
-import Tables.IntegerCode;
+import CodesBuilders.Delimiter235IntegerCodesBuilder;
+import CodesLists.IntegerCode;
 import Utils.WordsTranslation;
 
 import java.io.*;
@@ -10,7 +10,7 @@ import java.util.*;
 /**
  * Created by oradchykova on 5/22/17.
  */
-public class Encoding {
+public class Encoding235 {
     public static void encode (String inFileName, String outFileName, String dictionaryFileName) throws IOException {
         List<Integer> integerInput = WordsTranslation.readIntegerInput(inFileName, dictionaryFileName);
         byte[] output = encodeWords(integerInput);
@@ -45,7 +45,7 @@ public class Encoding {
     }
 
     private static IntegerCode encodeWord(Integer number) {
-        return Delimiter2IntegerCodesBuilder.getCodeForInteger(number);
+        return Delimiter235IntegerCodesBuilder.getCodeForInteger(number);
     }
 
     private static void writeFile (byte[] output, String outFileName) throws IOException {

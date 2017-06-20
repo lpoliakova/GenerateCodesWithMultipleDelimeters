@@ -1,7 +1,7 @@
-package Coding;
+package GradualCoding;
 
 import CodesBuilders.Delimiter2IntegerCodesBuilder;
-import Tables.IntegerCode;
+import CodesLists.IntegerCode;
 import Utils.WordsTranslation;
 
 import java.io.File;
@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by oradchykova on 5/22/17.
  */
-public class Decoding {
+public class Decoding2 {
     public static void decode (String inFileName, String outFileName, String dictionaryFileName) throws IOException{
         byte[] in = readCode(inFileName);
         List<IntegerCode> input = divideInCodewords(in);
